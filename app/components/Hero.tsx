@@ -1,0 +1,67 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { Github, Linkedin, Mail, Sparkles } from 'lucide-react'
+
+export default function Hero() {
+  return (
+    <section id="home" className="min-h-screen flex items-center justify-center pt-16 px-4">
+      <div className="max-w-4xl mx-auto text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="flex justify-center mb-6">
+            <Sparkles className="w-16 h-16 text-purple-500 animate-pulse" />
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            Développeur <span className="gradient-text">LLM & IA</span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
+            Spécialisé en Python, JavaScript et Intelligence Artificielle
+          </p>
+          
+          <p className="text-lg text-gray-500 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+            Ingénieur logiciel avec 4+ ans d'expérience chez Ericsson (Python, C++, Java). 
+            Passionné par l'IA et les LLM, je me spécialise dans le développement d'applications intelligentes 
+            et de solutions MLOps innovantes.
+          </p>
+          
+          <div className="flex gap-4 justify-center">
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="#projects"
+              className="bg-blue-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-600 transition"
+            >
+              Voir mes projets
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="#contact"
+              className="border-2 border-blue-500 text-blue-500 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 dark:hover:bg-gray-800 transition"
+            >
+              Me contacter
+            </motion.a>
+          </div>
+          
+          <div className="flex gap-6 justify-center mt-12">
+            <a href="https://github.com/DryZn" target="_blank" className="hover:text-blue-500 transition">
+              <Github className="w-6 h-6" />
+            </a>
+            <a href="https://www.linkedin.com/in/anthony-lesenfans" target="_blank" className="hover:text-blue-500 transition">
+              <Linkedin className="w-6 h-6" />
+            </a>
+            <a href="mailto:lesenfans.anthony@gmail.com" className="hover:text-blue-500 transition">
+              <Mail className="w-6 h-6" />
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
