@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   description: 'Portfolio d\'un développeur Python/JS spécialisé en LLM et Intelligence Artificielle',
 }
 
+import { LanguageProvider } from './contexts/LanguageContext'
+
 export default function RootLayout({
   children,
 }: {
@@ -18,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={inter.className}>
-        {children}
-        <SpeedInsights />
+        <LanguageProvider>
+          {children}
+          <SpeedInsights />
+        </LanguageProvider>
       </body>
     </html>
   )

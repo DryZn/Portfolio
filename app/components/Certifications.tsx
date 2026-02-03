@@ -2,25 +2,26 @@
 
 import { motion } from 'framer-motion'
 import { Award, CheckCircle } from 'lucide-react'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const certifications = [
   {
     title: 'Applied Data Science Camp',
     issuer: 'Ericsson',
-    date: 'Décembre 2023',
-    description: '100+ heures d\'étude intensive en Data Science et Machine Learning',
+    date: { fr: 'Décembre 2023', en: 'December 2023' },
     skills: ['Machine Learning', 'Python', 'Pandas', 'A/B Testing', 'Random Forest', 'Neural Networks', 'Clustering'],
     badgeUrl: 'https://www.credly.com/badges/14cef498-78ca-4432-9327-25fc1f9b8ccc'
   }
 ]
 
 const languages = [
-  { name: 'Français', level: 'Langue maternelle' },
-  { name: 'Anglais', level: 'Bilingue' },
-  { name: 'Allemand', level: 'Notions' }
+  { name: { fr: 'Français', en: 'French' }, level: { fr: 'Langue maternelle', en: 'Native' } },
+  { name: { fr: 'Anglais', en: 'English' }, level: { fr: 'Bilingue', en: 'Bilingual' } },
+  { name: { fr: 'Allemand', en: 'German' }, level: { fr: 'Notions', en: 'Basic' } }
 ]
 
 export default function Certifications() {
+  const { t, language } = useLanguage()
   return (
     <section id="certifications" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-6xl mx-auto">
@@ -30,7 +31,7 @@ export default function Certifications() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">Certifications & Langues</h2>
+          <h2 className="text-4xl font-bold mb-4">{t('certifications.title')}</h2>
         </motion.div>
         
         <div className="grid md:grid-cols-2 gap-12">
@@ -42,7 +43,7 @@ export default function Certifications() {
           >
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
               <Award className="w-6 h-6 text-blue-500" />
-              Certifications
+              {t('certifications.cert')}
             </h3>
             
             <div className="space-y-6">
@@ -57,13 +58,13 @@ export default function Certifications() {
                         rel="noopener noreferrer"
                         className="text-sm text-blue-500 hover:text-blue-600 underline"
                       >
-                        Voir le badge
+                        {t('certifications.viewBadge')}
                       </a>
                     )}
                   </div>
                   <p className="text-gray-600 dark:text-gray-300 mb-1">{cert.issuer}</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{cert.date}</p>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">{cert.description}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{cert.date[language]}</p>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">{t('certifications.description')}</p>
                   
                   <div className="flex flex-wrap gap-2">
                     {cert.skills.map(skill => (
@@ -85,15 +86,15 @@ export default function Certifications() {
           >
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
               <CheckCircle className="w-6 h-6 text-blue-500" />
-              Langues
+              {t('certifications.languages')}
             </h3>
             
             <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg space-y-6">
               {languages.map((lang, index) => (
                 <div key={index} className="border-b border-gray-200 dark:border-gray-700 last:border-0 pb-4 last:pb-0">
                   <div className="flex justify-between items-center">
-                    <span className="text-lg font-semibold">{lang.name}</span>
-                    <span className="text-blue-500 font-medium">{lang.level}</span>
+                    <span className="text-lg font-semibold">{lang.name[language]}</span>
+                    <span className="text-blue-500 font-medium">{lang.level[language]}</span>
                   </div>
                 </div>
               ))}
@@ -101,7 +102,7 @@ export default function Certifications() {
             
             {/* Formations complémentaires */}
             <div className="mt-8 bg-white dark:bg-gray-900 p-6 rounded-xl shadow-lg">
-              <h4 className="text-lg font-bold mb-4">Formations Ericsson</h4>
+              <h4 className="text-lg font-bold mb-4">{t('certifications.trainings')}</h4>
               <ul className="space-y-2">
                 <li className="text-gray-600 dark:text-gray-300 flex items-start">
                   <span className="text-blue-500 mr-2">•</span>

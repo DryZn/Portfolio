@@ -2,8 +2,11 @@
 
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Sparkles } from 'lucide-react'
+import { useLanguage } from '../contexts/LanguageContext'
 
 export default function Hero() {
+  const { t } = useLanguage()
+  
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-16 px-4">
       <div className="max-w-4xl mx-auto text-center">
@@ -17,17 +20,15 @@ export default function Hero() {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Développeur <span className="gradient-text">LLM & IA</span>
+            {t('hero.title')} <span className="gradient-text">{t('hero.titleHighlight')}</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
-            Spécialisé en Python, JavaScript et Intelligence Artificielle
+            {t('hero.subtitle')}
           </p>
           
           <p className="text-lg text-gray-500 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
-            Ingénieur logiciel avec 4+ ans d'expérience chez Ericsson (Python, C++, Java). 
-            Passionné par l'IA et les LLM, je me spécialise dans le développement d'applications intelligentes 
-            et de solutions MLOps innovantes.
+            {t('hero.description')}
           </p>
           
           <div className="flex gap-4 justify-center">
@@ -37,7 +38,7 @@ export default function Hero() {
               href="#projects"
               className="bg-blue-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-600 transition"
             >
-              Voir mes projets
+              {t('hero.viewProjects')}
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -45,7 +46,7 @@ export default function Hero() {
               href="#contact"
               className="border-2 border-blue-500 text-blue-500 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 dark:hover:bg-gray-800 transition"
             >
-              Me contacter
+              {t('hero.contact')}
             </motion.a>
           </div>
           

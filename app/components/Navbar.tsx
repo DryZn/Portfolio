@@ -2,8 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { Brain } from 'lucide-react'
+import { useLanguage } from '../contexts/LanguageContext'
+import LanguageSwitch from './LanguageSwitch'
 
 export default function Navbar() {
+  const { t } = useLanguage()
+  
   return (
     <motion.nav 
       initial={{ y: -100 }}
@@ -17,13 +21,14 @@ export default function Navbar() {
             <span className="font-bold text-xl">LLM Developer</span>
           </div>
           
-          <div className="hidden md:flex gap-8">
-            <a href="#home" className="hover:text-blue-500 transition">Accueil</a>
-            <a href="#skills" className="hover:text-blue-500 transition">Compétences</a>
-            <a href="#experience" className="hover:text-blue-500 transition">Expérience</a>
-            <a href="#projects" className="hover:text-blue-500 transition">Projets</a>
-            <a href="#certifications" className="hover:text-blue-500 transition">Certifications</a>
-            <a href="#contact" className="hover:text-blue-500 transition">Contact</a>
+          <div className="hidden md:flex gap-8 items-center">
+            <a href="#home" className="hover:text-blue-500 transition">{t('nav.home')}</a>
+            <a href="#skills" className="hover:text-blue-500 transition">{t('nav.skills')}</a>
+            <a href="#experience" className="hover:text-blue-500 transition">{t('nav.experience')}</a>
+            <a href="#projects" className="hover:text-blue-500 transition">{t('nav.projects')}</a>
+            <a href="#certifications" className="hover:text-blue-500 transition">{t('nav.certifications')}</a>
+            <a href="#contact" className="hover:text-blue-500 transition">{t('nav.contact')}</a>
+            <LanguageSwitch />
           </div>
         </div>
       </div>
