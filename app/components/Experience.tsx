@@ -65,6 +65,48 @@ const experiences = [
     tech: ['Python', 'Kubernetes', 'Docker', 'FastAPI', 'MongoDB', 'Pandas']
   },
   {
+    company: 'Ericsson',
+    role: { fr: 'Développeur Java', en: 'Java Developer' },
+    period: { fr: 'Oct. 2021 - Avr. 2022', en: 'Oct. 2021 - Apr. 2022' },
+    location: 'Massy, France',
+    description: {
+      fr: [
+        'Développement de microservices Java avec IntelliJ et Spring Boot',
+        'Gestion des dépendances FOSS Guardian avec Maven et méthodologie Scrum',
+        'Utilisation de MongoDB, Kafka, Swagger et Postman pour le débogage',
+        'Tests unitaires et d\'intégration avec méthodologie Scrum'
+      ],
+      en: [
+        'Java microservices development using IntelliJ and Spring Boot',
+        'FOSS Guardian dependency management with Maven using Scrum methodology',
+        'Used MongoDB, Kafka, Swagger, and Postman for microservice debugging',
+        'Performed unit testing and integration testing tasks; followed Scrum methodology'
+      ]
+    },
+    tech: ['Java', 'Spring Boot', 'MongoDB', 'Kafka', 'Maven', 'Docker', 'Kubernetes', 'Jenkins']
+  },
+  {
+    company: 'Sanofi',
+    role: { fr: 'Développeur d\'Outils Analytiques', en: 'Analytical Tools Developer' },
+    period: { fr: 'Sept. 2020 - Août 2021', en: 'Sept. 2020 - Aug. 2021' },
+    location: 'Chilly-Mazarin, France',
+    description: {
+      fr: [
+        'Développement d\'une application dashboard web avec R Shiny',
+        'Automatisation de migration de base de données serveur vers local (SQLite)',
+        'Requêtes sur diverses bases de données (SQL, MySQL, Prometheus)',
+        'Tests d\'intégration continue avec Jenkins'
+      ],
+      en: [
+        'Developed a web-based dashboard application using R Shiny',
+        'Automated server-to-local database migration (SQLite)',
+        'Performed queries on various databases to retrieve data (SQL, MySQL, Prometheus)',
+        'Conducted continuous integration tests using Jenkins'
+      ]
+    },
+    tech: ['R', 'R Shiny', 'SQL', 'SQLite', 'MySQL', 'Prometheus', 'Jenkins', 'Git']
+  },
+  {
     company: 'Thales',
     role: { fr: 'Ingénieur Traitement d\'Images', en: 'Image Processing Engineer' },
     period: { fr: 'Sept. 2018 - Août 2020', en: 'Sept. 2018 - Aug. 2020' },
