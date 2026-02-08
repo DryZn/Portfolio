@@ -7,6 +7,18 @@ import { useLanguage } from '../contexts/LanguageContext'
 export default function Contact() {
   const { t } = useLanguage()
   
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const formData = new FormData(e.target as HTMLFormElement)
+    const name = formData.get('name')
+    const email = formData.get('email')
+    const message = formData.get('message')
+    
+    const subject = `Contact Portfolio - ${name}`
+    const body = `${message}%0A%0A${name}%0A${email}`
+    window.open(`mailto:lesenfans.anthony@gmail.com?subject=${subject}&body=${body}`)
+  }
+  
   return (
     <section id="contact" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-4xl mx-auto">
@@ -49,20 +61,27 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="space-y-4"
+            onSubmit={handleSubmit}
           >
             <input
               type="text"
+              name="name"
               placeholder={t('contact.name')}
+              required
               className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <input
               type="email"
+              name="email"
               placeholder={t('contact.email')}
+              required
               className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <textarea
+              name="message"
               placeholder={t('contact.message')}
               rows={5}
+              required
               className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
