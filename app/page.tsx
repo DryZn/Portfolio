@@ -1,15 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  Brain,
-  Code,
-  Sparkles,
-  Github,
-  Linkedin,
-  Mail,
-  ExternalLink,
-} from "lucide-react";
+import { useEffect } from "react";
 import { useLanguage } from "./contexts/LanguageContext";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -21,6 +12,26 @@ import Contact from "./components/Contact";
 
 export default function Home() {
   const { t } = useLanguage();
+
+  // Wake up backend on page load and track status
+  useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    if (apiUrl) {
+      const startTime = Date.now();
+      fetch(`${apiUrl}/health`)
+        .then(() => {
+          const duration = Date.now() - startTime;
+          sessionStorage.setItem(
+            "backendReady",
+            duration < 5000 ? "true" : "false",
+          );
+          sessionStorage.setItem("backendReadyTime", Date.now().toString());
+        })
+        .catch(() => {
+          sessionStorage.setItem("backendReady", "false");
+        });
+    }
+  }, []);
 
   return (
     <main className="min-h-screen">

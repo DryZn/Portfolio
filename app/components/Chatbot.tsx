@@ -16,48 +16,16 @@ interface ChatbotProps {
   apiUrl?: string;
 }
 
-const chatTranslations = {
-  fr: {
-    "chat.title": "Assistant IA - Anthony",
-    "chat.welcome":
-      "Salut ! Je suis l'assistant IA d'Anthony. Pose-moi des questions sur son expérience, ses compétences ou ses projets !",
-    "chat.placeholder": "Pose une question sur Anthony...",
-    "chat.reset": "Réinitialiser la conversation",
-    "chat.resetSuccess":
-      "Conversation réinitialisée ! Pose-moi des questions sur Anthony.",
-    "chat.error":
-      "Désolé, je ne peux pas répondre pour le moment. Vérifiez que l'API backend est démarrée.",
-    "chat.sources": "Sources",
-  },
-  en: {
-    "chat.title": "AI Assistant - Anthony",
-    "chat.welcome":
-      "Hi! I'm Anthony's AI assistant. Ask me questions about his experience, skills or projects!",
-    "chat.placeholder": "Ask a question about Anthony...",
-    "chat.reset": "Reset conversation",
-    "chat.resetSuccess": "Conversation reset! Ask me questions about Anthony.",
-    "chat.error":
-      "Sorry, I can't respond right now. Check that the backend API is running.",
-    "chat.sources": "Sources",
-  },
-};
-
 export default function Chatbot({
   apiUrl = process.env.NEXT_PUBLIC_API_URL,
 }: ChatbotProps) {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-
-  const getChatText = (key: string) => {
-    return (
-      chatTranslations[language][key as keyof typeof chatTranslations.fr] || key
-    );
-  };
 
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: getChatText("chat.welcome"),
+      text: t("chat.welcome"),
       isUser: false,
     },
   ]);
@@ -67,20 +35,19 @@ export default function Chatbot({
   // Update welcome message when language changes
   useEffect(() => {
     setMessages((prev) => {
-      // If it's the initial welcome message (id: '1'), update it
-      if (prev.length > 0 && prev[0].id === "1" && !prev[0].isUser) {
-        return [
-          {
-            id: "1",
-            text: getChatText("chat.welcome"),
-            isUser: false,
-          },
-          ...prev.slice(1),
-        ];
-      }
-      return prev;
+      return prev.map((msg) => {
+        // Update welcome message
+        if (msg.id === "1" && !msg.isUser) {
+          return { ...msg, text: t("chat.welcome") };
+        }
+        // Update waking message
+        if (msg.id === "waking" && !msg.isUser) {
+          return { ...msg, text: t("chat.waking") };
+        }
+        return msg;
+      });
     });
-  }, [language]);
+  }, [language, t]);
 
   const sendMessage = async () => {
     if (!inputText.trim() || isLoading) return;
@@ -94,6 +61,26 @@ export default function Chatbot({
     setMessages((prev) => [...prev, userMessage]);
     setInputText("");
     setIsLoading(true);
+
+    // Show wake-up message if backend was not ready or inactive for >10min
+    const backendReadyTime = sessionStorage.getItem("backendReadyTime");
+    const timeSinceReady = backendReadyTime
+      ? Date.now() - parseInt(backendReadyTime)
+      : Infinity;
+    const backendReady =
+      sessionStorage.getItem("backendReady") === "true" &&
+      timeSinceReady < 10 * 60 * 1000;
+
+    if (!backendReady) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: "waking",
+          text: t("chat.waking"),
+          isUser: false,
+        },
+      ]);
+    }
 
     try {
       const response = await fetch(`${apiUrl}/api/chat`, {
@@ -110,6 +97,11 @@ export default function Chatbot({
 
       const data = await response.json();
 
+      // Remove wake-up message and mark backend as ready
+      setMessages((prev) => prev.filter((m) => m.id !== "waking"));
+      sessionStorage.setItem("backendReady", "true");
+      sessionStorage.setItem("backendReadyTime", Date.now().toString());
+
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: data.response,
@@ -119,9 +111,11 @@ export default function Chatbot({
 
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
+      setMessages((prev) => prev.filter((m) => m.id !== "waking"));
+
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: getChatText("chat.error"),
+        text: t("chat.error"),
         isUser: false,
       };
       setMessages((prev) => [...prev, errorMessage]);
@@ -136,7 +130,7 @@ export default function Chatbot({
       setMessages([
         {
           id: "1",
-          text: getChatText("chat.resetSuccess"),
+          text: t("chat.resetSuccess"),
           isUser: false,
         },
       ]);
@@ -145,7 +139,7 @@ export default function Chatbot({
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
@@ -172,12 +166,12 @@ export default function Chatbot({
       >
         {/* Header */}
         <div className="bg-blue-600 text-white p-4 rounded-t-lg flex justify-between items-center">
-          <h3 className="font-semibold">{getChatText("chat.title")}</h3>
+          <h3 className="font-semibold">{t("chat.title")}</h3>
           <div className="flex gap-2">
             <button
               onClick={resetChat}
               className="hover:bg-blue-700 p-1 rounded"
-              title={getChatText("chat.reset")}
+              title={t("chat.reset")}
             >
               <RotateCcw size={16} />
             </button>
@@ -209,7 +203,7 @@ export default function Chatbot({
                 </ReactMarkdown>
                 {message.sources && message.sources.length > 0 && (
                   <div className="mt-2 text-xs opacity-75">
-                    {getChatText("chat.sources")}:{" "}
+                    {t("chat.sources")}:{" "}
                     {Array.from(
                       new Set(
                         message.sources.map((s) => {
@@ -249,8 +243,8 @@ export default function Chatbot({
             <textarea
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder={getChatText("chat.placeholder")}
+              onKeyDown={handleKeyDown}
+              placeholder={t("chat.placeholder")}
               className="flex-1 p-2 border rounded-lg resize-none h-10 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 bg-white"
               disabled={isLoading}
             />

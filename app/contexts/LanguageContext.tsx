@@ -59,6 +59,18 @@ const translations = {
     "contact.message": "Message",
     "contact.send": "Envoyer",
     "footer.rights": "Portfolio LLM Developer. Tous droits réservés.",
+    "chat.title": "Assistant IA - Anthony",
+    "chat.welcome":
+      "Salut ! Je suis l'assistant IA d'Anthony. Pose-moi des questions sur son expérience, ses compétences ou ses projets !",
+    "chat.placeholder": "Pose une question sur Anthony...",
+    "chat.reset": "Réinitialiser la conversation",
+    "chat.resetSuccess":
+      "Conversation réinitialisée ! Pose-moi des questions sur Anthony.",
+    "chat.error":
+      "Désolé, je ne peux pas répondre pour le moment. Vérifiez que l'API backend est démarrée.",
+    "chat.sources": "Sources",
+    "chat.waking":
+      "⏳ Réveil du serveur en cours... Première requête peut prendre 30 secondes.",
   },
   en: {
     "nav.home": "Home",
@@ -102,6 +114,16 @@ const translations = {
     "contact.message": "Message",
     "contact.send": "Send",
     "footer.rights": "LLM Developer Portfolio. All rights reserved.",
+    "chat.title": "AI Assistant - Anthony",
+    "chat.welcome":
+      "Hi! I'm Anthony's AI assistant. Ask me questions about his experience, skills or projects!",
+    "chat.placeholder": "Ask a question about Anthony...",
+    "chat.reset": "Reset conversation",
+    "chat.resetSuccess": "Conversation reset! Ask me questions about Anthony.",
+    "chat.error":
+      "Sorry, I can't respond right now. Check that the backend API is running.",
+    "chat.sources": "Sources",
+    "chat.waking": "⏳ Waking up server... First request may take 30 seconds.",
   },
 };
 
