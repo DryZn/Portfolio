@@ -1,9 +1,9 @@
-# Portfolio - Développeur LLM & IA
+# Portfolio - LLM & AI Developer
 
 [![CI/CD Pipeline](https://github.com/DryZn/portfolio/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/DryZn/portfolio/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Portfolio moderne pour un développeur Python/JS spécialisé en LLM et Intelligence Artificielle.
+Modern portfolio for a Python/JS developer specialized in LLM and Artificial Intelligence.
 
 ## 🚀 Technologies
 
@@ -14,13 +14,13 @@ Portfolio moderne pour un développeur Python/JS spécialisé en LLM et Intellig
 
 ## 🔄 CI/CD Pipeline
 
-Pipeline automatisé avec GitHub Actions :
+Automated pipeline with GitHub Actions:
 
-- ✅ **Qualité du code** : ESLint + Prettier
-- ✅ **Vérification des types** : TypeScript
-- ✅ **Build** : Next.js build test
-- ✅ **Docker** : Container build et test
-- ✅ **Déploiement** : Auto-deploy sur Vercel
+- ✅ **Code Quality**: ESLint + Prettier
+- ✅ **Type Checking**: TypeScript
+- ✅ **Build**: Next.js build test
+- ✅ **Docker**: Container build and test
+- ✅ **Deployment**: Auto-deploy to Vercel
 
 ## 🐳 Docker
 
@@ -32,43 +32,43 @@ docker build -t portfolio-frontend .
 docker run -p 3000:3000 portfolio-frontend
 ```
 
-Accès : `http://localhost:3000`
+Access: `http://localhost:3000`
 
 ## 📦 Installation
 
 ```bash
-# Installer les dépendances
+# Install dependencies
 npm install
 
-# Lancer le serveur de développement
+# Start development server
 npm run dev
 
-# Build pour production
+# Build for production
 npm run build
 npm start
 ```
 
-## 🎨 Fonctionnalités
+## 🎨 Features
 
-- ✅ Design moderne et responsive
-- ✅ Animations fluides
-- ✅ Mode sombre/clair automatique
-- ✅ Section compétences (Python, JS, LLM)
-- ✅ Portfolio de projets LLM
-- ✅ Formulaire de contact
-- ✅ Navigation smooth
-- ✅ SEO optimisé
+- ✅ Modern and responsive design
+- ✅ Smooth animations
+- ✅ Automatic dark/light mode
+- ✅ Skills section (Python, JS, LLM)
+- ✅ LLM projects portfolio
+- ✅ Contact form
+- ✅ Smooth navigation
+- ✅ SEO optimized
 
-## 📝 Personnalisation
+## 📝 Customization
 
-1. Modifiez les informations personnelles dans `app/components/Hero.tsx`
-2. Ajoutez vos projets dans `app/components/Projects.tsx`
-3. Mettez à jour vos compétences dans `app/components/Skills.tsx`
-4. Changez les informations de contact dans `app/components/Contact.tsx`
+1. Modify personal information in `app/components/Hero.tsx`
+2. Add your projects in `app/components/Projects.tsx`
+3. Update your skills in `app/components/Skills.tsx`
+4. Change contact information in `app/components/Contact.tsx`
 
-## 🌐 Déploiement
+## 🌐 Deployment
 
-Le plus simple est de déployer sur Vercel :
+The easiest way is to deploy on Vercel:
 
 ```bash
 npm install -g vercel
@@ -77,4 +77,4 @@ vercel
 
 ## 📧 Contact
 
-Pour toute question, contactez-moi à lesenfans.anthony@gmail.com
+For any questions, contact me at lesenfans.anthony@gmail.com

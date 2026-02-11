@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 
 type Language = "fr" | "en";
 
@@ -44,7 +50,7 @@ const translations = {
     "certifications.viewBadge": "Voir le badge",
     "certifications.trainings": "Formations Ericsson",
     "certifications.description":
-      "100+ heures d'étude intensive en Data Science et Machine Learning",
+      "100+ heures d'études intensives en Data Science et Machine Learning",
     "contact.title": "Contact",
     "contact.subtitle": "Discutons de votre projet",
     "contact.info": "Informations",
@@ -104,11 +110,22 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 );
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("fr");
+  const [language, setLanguage] = useState<Language>("en");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const browserLang = navigator.language.split("-")[0];
+    setLanguage(browserLang === "fr" ? "fr" : "en");
+    setMounted(true);
+  }, []);
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations.fr] || key;
   };
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
