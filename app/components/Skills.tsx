@@ -1,35 +1,68 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { Brain, Code, Database, Zap } from 'lucide-react'
-import { useLanguage } from '../contexts/LanguageContext'
+import { motion } from "framer-motion";
+import { Brain, Code, Database, Zap } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const skills = [
   {
     icon: Code,
-    titleKey: 'skills.development',
-    items: ['Python', 'JavaScript/TypeScript', 'C++', 'Java', 'FastAPI', 'Node.js', 'Spring Boot']
+    titleKey: "skills.development",
+    items: [
+      "Python",
+      "JavaScript/TypeScript",
+      "C++",
+      "Java",
+      "FastAPI",
+      "Node.js",
+      "Spring Boot",
+    ],
   },
   {
     icon: Brain,
-    titleKey: 'skills.llm',
-    items: ['OpenAI GPT', 'LangChain', 'Hugging Face', 'RAG', 'Prompt Engineering', 'Fine-tuning', 'Embeddings']
+    titleKey: "skills.llm",
+    items: [
+      "OpenAI GPT",
+      "LangChain",
+      "Hugging Face",
+      "RAG",
+      "Prompt Engineering",
+      "Fine-tuning",
+      "Embeddings",
+    ],
   },
   {
     icon: Database,
-    titleKey: 'skills.data',
-    items: ['TensorFlow', 'Pandas', 'NumPy', 'OpenCV', 'Scikit-learn', 'MLOps', 'Computer Vision']
+    titleKey: "skills.data",
+    items: [
+      "TensorFlow",
+      "Pandas",
+      "NumPy",
+      "OpenCV",
+      "Scikit-learn",
+      "MLOps",
+      "Computer Vision",
+    ],
   },
   {
     icon: Zap,
-    titleKey: 'skills.devops',
-    items: ['Docker', 'Kubernetes', 'Git/GitLab', 'Jenkins', 'Helm', 'MongoDB', 'Grafana', 'Prometheus']
-  }
-]
+    titleKey: "skills.devops",
+    items: [
+      "Docker",
+      "Kubernetes",
+      "Git/GitLab",
+      "Jenkins",
+      "Helm",
+      "MongoDB",
+      "Grafana",
+      "Prometheus",
+    ],
+  },
+];
 
 export default function Skills() {
-  const { t } = useLanguage()
-  
+  const { t } = useLanguage();
+
   return (
     <section id="skills" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-6xl mx-auto">
@@ -39,10 +72,12 @@ export default function Skills() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">{t('skills.title')}</h2>
-          <p className="text-gray-600 dark:text-gray-300">{t('skills.subtitle')}</p>
+          <h2 className="text-4xl font-bold mb-4">{t("skills.title")}</h2>
+          <p className="text-gray-600 dark:text-gray-300">
+            {t("skills.subtitle")}
+          </p>
         </motion.div>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skills.map((skill, index) => (
             <motion.div
@@ -56,8 +91,10 @@ export default function Skills() {
               <skill.icon className="w-12 h-12 text-blue-500 mb-4" />
               <h3 className="text-xl font-bold mb-4">{t(skill.titleKey)}</h3>
               <ul className="space-y-2">
-                {skill.items.map(item => (
-                  <li key={item} className="text-gray-600 dark:text-gray-300">• {item}</li>
+                {skill.items.map((item) => (
+                  <li key={item} className="text-gray-600 dark:text-gray-300">
+                    • {item}
+                  </li>
                 ))}
               </ul>
             </motion.div>
@@ -65,5 +102,5 @@ export default function Skills() {
         </div>
       </div>
     </section>
-  )
+  );
 }

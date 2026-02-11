@@ -1,5 +1,8 @@
 # Portfolio - Développeur LLM & IA
 
+[![CI/CD Pipeline](https://github.com/DryZn/portfolio/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/DryZn/portfolio/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Portfolio moderne pour un développeur Python/JS spécialisé en LLM et Intelligence Artificielle.
 
 ## 🚀 Technologies
@@ -8,6 +11,28 @@ Portfolio moderne pour un développeur Python/JS spécialisé en LLM et Intellig
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
+
+## 🔄 CI/CD Pipeline
+
+Pipeline automatisé avec GitHub Actions :
+
+- ✅ **Qualité du code** : ESLint + Prettier
+- ✅ **Vérification des types** : TypeScript
+- ✅ **Build** : Next.js build test
+- ✅ **Docker** : Container build et test
+- ✅ **Déploiement** : Auto-deploy sur Vercel
+
+## 🐳 Docker
+
+```bash
+# Build image
+docker build -t portfolio-frontend .
+
+# Run container
+docker run -p 3000:3000 portfolio-frontend
+```
+
+Accès : `http://localhost:3000`
 
 ## 📦 Installation
 
