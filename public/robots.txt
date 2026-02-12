@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-anthony-lesenfans.vercel.app/sitemap.xml
