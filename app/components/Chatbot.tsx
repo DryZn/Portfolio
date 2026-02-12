@@ -160,7 +160,7 @@ export default function Chatbot({
 
       {/* Chat window */}
       <div
-        className={`fixed bottom-6 right-6 w-96 h-[500px] bg-white rounded-lg shadow-2xl border transition-all duration-300 z-50 ${
+        className={`fixed inset-x-4 bottom-4 sm:right-6 sm:left-auto sm:w-96 h-[500px] max-h-[80vh] bg-white rounded-lg shadow-2xl border transition-all duration-300 z-50 ${
           isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0"
         }`}
       >

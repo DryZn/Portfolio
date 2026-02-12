@@ -1,12 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Brain } from "lucide-react";
+import { Brain, Menu, X } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import LanguageSwitch from "./LanguageSwitch";
+import { useState } from "react";
 
 export default function Navbar() {
   const { t } = useLanguage();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <motion.nav
@@ -45,7 +47,61 @@ export default function Navbar() {
             </a>
             <LanguageSwitch />
           </div>
+
+          <div className="md:hidden flex items-center gap-4">
+            <LanguageSwitch />
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
+
+        {isMenuOpen && (
+          <div className="md:hidden pb-4 flex flex-col gap-4">
+            <a
+              href="#home"
+              className="hover:text-blue-500 transition"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t("nav.home")}
+            </a>
+            <a
+              href="#skills"
+              className="hover:text-blue-500 transition"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t("nav.skills")}
+            </a>
+            <a
+              href="#experience"
+              className="hover:text-blue-500 transition"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t("nav.experience")}
+            </a>
+            <a
+              href="#projects"
+              className="hover:text-blue-500 transition"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t("nav.projects")}
+            </a>
+            <a
+              href="#certifications"
+              className="hover:text-blue-500 transition"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t("nav.certifications")}
+            </a>
+            <a
+              href="#contact"
+              className="hover:text-blue-500 transition"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {t("nav.contact")}
+            </a>
+          </div>
+        )}
       </div>
     </motion.nav>
   );
