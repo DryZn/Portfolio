@@ -83,12 +83,21 @@ export default function Chatbot({
     }
 
     try {
+      // Send last 20 messages as history (exclude welcome message)
+      const history = messages
+        .filter((m) => m.id !== "1" && m.id !== "waking")
+        .slice(-20)
+        .map((m) => ({
+          role: m.isUser ? "user" : "assistant",
+          content: m.text,
+        }));
+
       const response = await fetch(`${apiUrl}/api/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message: inputText }),
+        body: JSON.stringify({ message: inputText, history }),
       });
 
       if (!response.ok) {
@@ -124,19 +133,14 @@ export default function Chatbot({
     }
   };
 
-  const resetChat = async () => {
-    try {
-      await fetch(`${apiUrl}/api/chat/reset`, { method: "POST" });
-      setMessages([
-        {
-          id: "1",
-          text: t("chat.resetSuccess"),
-          isUser: false,
-        },
-      ]);
-    } catch (error) {
-      console.error("Error during reset:", error);
-    }
+  const resetChat = () => {
+    setMessages([
+      {
+        id: "1",
+        text: t("chat.resetSuccess"),
+        isUser: false,
+      },
+    ]);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
