@@ -8,7 +8,7 @@ const certifications = [
   {
     title: "Applied Data Science Camp",
     issuer: "Ericsson",
-    date: { fr: "Décembre 2023", en: "December 2023" },
+    dateKey: "certifications.date",
     skills: [
       "Machine Learning",
       "Python",
@@ -25,21 +25,21 @@ const certifications = [
 
 const languages = [
   {
-    name: { fr: "Français", en: "French" },
-    level: { fr: "Langue maternelle", en: "Native" },
+    nameKey: "certifications.french",
+    levelKey: "certifications.french.level",
   },
   {
-    name: { fr: "Anglais", en: "English" },
-    level: { fr: "Bilingue", en: "Bilingual" },
+    nameKey: "certifications.english",
+    levelKey: "certifications.english.level",
   },
   {
-    name: { fr: "Allemand", en: "German" },
-    level: { fr: "Notions", en: "Basic" },
+    nameKey: "certifications.german",
+    levelKey: "certifications.german.level",
   },
 ];
 
 export default function Certifications() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   return (
     <section
       id="certifications"
@@ -94,7 +94,7 @@ export default function Certifications() {
                     {cert.issuer}
                   </p>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
-                    {cert.date[language]}
+                    {t(cert.dateKey)}
                   </p>
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
                     {t("certifications.description")}
@@ -134,10 +134,10 @@ export default function Certifications() {
                 >
                   <div className="flex justify-between items-center">
                     <span className="text-lg font-semibold">
-                      {lang.name[language]}
+                      {t(lang.nameKey)}
                     </span>
                     <span className="text-blue-500 font-medium">
-                      {lang.level[language]}
+                      {t(lang.levelKey)}
                     </span>
                   </div>
                 </div>

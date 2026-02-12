@@ -1,88 +1,58 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Briefcase, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 
 const experiences = [
   {
     company: "Ericsson",
-    role: { fr: "Frontrunner", en: "Frontrunner" },
-    period: { fr: "Mai 2025 - Aujourd'hui", en: "May 2025 - Present" },
+    roleKey: "experience.ericsson.frontrunner",
+    periodKey: "experience.ericsson.frontrunner.period",
     location: "Massy, France",
-    description: {
-      fr: [
-        "Développement de rApps en JavaScript",
-        "Supervision et gestion de projets avec méthodologie Scrum",
-        "Définition des cas d'usage avec les clients",
-      ],
-      en: [
-        "Development of rApps in JavaScript",
-        "Project supervision and management with Scrum methodology",
-        "Definition of use cases with clients",
-      ],
-    },
+    descKeys: [
+      "experience.ericsson.frontrunner.desc1",
+      "experience.ericsson.frontrunner.desc2",
+      "experience.ericsson.frontrunner.desc3",
+    ],
     tech: ["JavaScript", "Docker", "5G", "Node.js", "SQL"],
   },
   {
     company: "Ericsson",
-    role: { fr: "Développeur C++", en: "C++ Developer" },
-    period: { fr: "Févr. 2024 - Mai 2025", en: "Feb. 2024 - May 2025" },
+    roleKey: "experience.ericsson.cpp",
+    periodKey: "experience.ericsson.cpp.period",
     location: "Massy, France",
-    description: {
-      fr: [
-        "Développement C++ sur gNodeB (5G) - modules UE RPC et RC",
-        "Optimisation du temps d'interruption de handover entre cellules",
-        "Travail sur systèmes télécom temps réel critiques",
-      ],
-      en: [
-        "C++ development on gNodeB (5G) - UE RPC and RC modules",
-        "Optimization of handover interruption time between cells",
-        "Work on critical real-time telecom systems",
-      ],
-    },
+    descKeys: [
+      "experience.ericsson.cpp.desc1",
+      "experience.ericsson.cpp.desc2",
+      "experience.ericsson.cpp.desc3",
+    ],
     tech: ["C++", "5G", "Git", "Gerrit", "Jenkins"],
   },
   {
     company: "Ericsson",
-    role: { fr: "Développeur Cloud Native", en: "Cloud Native Developer" },
-    period: { fr: "Avr. 2022 - Févr. 2024", en: "Apr. 2022 - Feb. 2024" },
+    roleKey: "experience.ericsson.cloud",
+    periodKey: "experience.ericsson.cloud.period",
     location: "Massy, France",
-    description: {
-      fr: [
-        "Développement de microservice MLOps en Python",
-        "Création d'une bibliothèque de logging et wrapper OpenTelemetry",
-        "Déploiement d'applications Docker sur Kubernetes avec Helm",
-        "Microservice de simulation de trafic 4G/5G (Python, JS, MongoDB)",
-      ],
-      en: [
-        "Development of MLOps microservice in Python",
-        "Creation of logging library and OpenTelemetry wrapper",
-        "Deployment of Docker applications on Kubernetes with Helm",
-        "4G/5G traffic simulation microservice (Python, JS, MongoDB)",
-      ],
-    },
+    descKeys: [
+      "experience.ericsson.cloud.desc1",
+      "experience.ericsson.cloud.desc2",
+      "experience.ericsson.cloud.desc3",
+      "experience.ericsson.cloud.desc4",
+    ],
     tech: ["Python", "Kubernetes", "Docker", "FastAPI", "MongoDB", "Pandas"],
   },
   {
     company: "Ericsson",
-    role: { fr: "Développeur Java", en: "Java Developer" },
-    period: { fr: "Oct. 2021 - Avr. 2022", en: "Oct. 2021 - Apr. 2022" },
+    roleKey: "experience.ericsson.java",
+    periodKey: "experience.ericsson.java.period",
     location: "Massy, France",
-    description: {
-      fr: [
-        "Développement de microservices Java avec IntelliJ et Spring Boot",
-        "Gestion des dépendances FOSS Guardian avec Maven et méthodologie Scrum",
-        "Utilisation de MongoDB, Kafka, Swagger et Postman pour le débogage",
-        "Tests unitaires et d'intégration avec méthodologie Scrum",
-      ],
-      en: [
-        "Java microservices development using IntelliJ and Spring Boot",
-        "FOSS Guardian dependency management with Maven using Scrum methodology",
-        "Used MongoDB, Kafka, Swagger, and Postman for microservice debugging",
-        "Performed unit testing and integration testing tasks; followed Scrum methodology",
-      ],
-    },
+    descKeys: [
+      "experience.ericsson.java.desc1",
+      "experience.ericsson.java.desc2",
+      "experience.ericsson.java.desc3",
+      "experience.ericsson.java.desc4",
+    ],
     tech: [
       "Java",
       "Spring Boot",
@@ -96,26 +66,15 @@ const experiences = [
   },
   {
     company: "Sanofi",
-    role: {
-      fr: "Développeur d'Outils Analytiques",
-      en: "Analytical Tools Developer",
-    },
-    period: { fr: "Sept. 2020 - Août 2021", en: "Sept. 2020 - Aug. 2021" },
+    roleKey: "experience.sanofi.role",
+    periodKey: "experience.sanofi.period",
     location: "Chilly-Mazarin, France",
-    description: {
-      fr: [
-        "Développement d'une application dashboard web avec R Shiny",
-        "Automatisation de migration de base de données serveur vers local (SQLite)",
-        "Requêtes sur diverses bases de données (SQL, MySQL, Prometheus)",
-        "Tests d'intégration continue avec Jenkins",
-      ],
-      en: [
-        "Developed a web-based dashboard application using R Shiny",
-        "Automated server-to-local database migration (SQLite)",
-        "Performed queries on various databases to retrieve data (SQL, MySQL, Prometheus)",
-        "Conducted continuous integration tests using Jenkins",
-      ],
-    },
+    descKeys: [
+      "experience.sanofi.desc1",
+      "experience.sanofi.desc2",
+      "experience.sanofi.desc3",
+      "experience.sanofi.desc4",
+    ],
     tech: [
       "R",
       "R Shiny",
@@ -129,30 +88,20 @@ const experiences = [
   },
   {
     company: "Thales",
-    role: {
-      fr: "Ingénieur Traitement d'Images",
-      en: "Image Processing Engineer",
-    },
-    period: { fr: "Sept. 2018 - Août 2020", en: "Sept. 2018 - Aug. 2020" },
+    roleKey: "experience.thales.role",
+    periodKey: "experience.thales.period",
     location: "Le Plessis-Pâté, France",
-    description: {
-      fr: [
-        "Détection d'objets par Deep Learning et OpenCV",
-        "Module de reconnaissance de plaques sur Jetson Nano",
-        "Développement de module de détection de fraude aux portiques",
-      ],
-      en: [
-        "Object detection using Deep Learning and OpenCV",
-        "License plate recognition module on Jetson Nano",
-        "Development of fraud detection module at gates",
-      ],
-    },
+    descKeys: [
+      "experience.thales.desc1",
+      "experience.thales.desc2",
+      "experience.thales.desc3",
+    ],
     tech: ["Python", "OpenCV", "TensorFlow", "Deep Learning", "SQLite"],
   },
 ];
 
 export default function Experience() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <section id="experience" className="py-20 px-4">
@@ -182,14 +131,14 @@ export default function Experience() {
               <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                 <div>
                   <h3 className="text-2xl font-bold text-blue-500">
-                    {exp.role[language]}
+                    {t(exp.roleKey)}
                   </h3>
                   <p className="text-xl font-semibold mt-1">{exp.company}</p>
                 </div>
                 <div className="flex flex-col md:items-end mt-2 md:mt-0">
                   <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
                     <Calendar className="w-4 h-4" />
-                    <span>{exp.period[language]}</span>
+                    <span>{t(exp.periodKey)}</span>
                   </div>
                   <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
                     {exp.location}
@@ -198,13 +147,13 @@ export default function Experience() {
               </div>
 
               <ul className="space-y-2 mb-4">
-                {exp.description[language].map((item, i) => (
+                {exp.descKeys.map((key, i) => (
                   <li
                     key={i}
                     className="text-gray-600 dark:text-gray-300 flex items-start"
                   >
                     <span className="text-blue-500 mr-2">▸</span>
-                    {item}
+                    {t(key)}
                   </li>
                 ))}
               </ul>
