@@ -2,8 +2,20 @@
 
 [![CI/CD Pipeline](https://github.com/DryZn/portfolio/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/DryZn/portfolio/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?logo=vercel)](https://portfolio-anthony-lesenfans.vercel.app/)
 
 Modern portfolio for a Python/JS developer specialized in LLM and Artificial Intelligence.
+
+## 🌐 Live Demo
+
+**Portfolio URL**: https://portfolio-anthony-lesenfans.vercel.app/
+
+**Features:**
+
+- Interactive AI chatbot powered by Google Gemini
+- Bilingual support (English/French)
+- Responsive design for all devices
+- Real-time backend wake-up notifications
 
 ## 🚀 Technologies
 
