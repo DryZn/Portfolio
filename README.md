@@ -6,6 +6,11 @@
 
 Modern portfolio for a Python/JS developer specialized in LLM and Artificial Intelligence.
 
+## 🔗 Related Repository
+
+**Backend API**: [AI Assistant Portfolio](https://github.com/DryZn/AI_Assistant_Portfolio) - FastAPI RAG backend with LangChain + FAISS  
+**API URL**: https://ai-assistant-portfolio-eka7.onrender.com
+
 ## 🌐 Live Demo
 
 **Portfolio URL**: https://portfolio-anthony-lesenfans.vercel.app/
