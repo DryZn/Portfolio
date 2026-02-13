@@ -59,6 +59,7 @@ export default function Chatbot({
     };
 
     setMessages((prev) => [...prev, userMessage]);
+    const currentInput = inputText;
     setInputText("");
     setIsLoading(true);
 
@@ -92,33 +93,66 @@ export default function Chatbot({
           content: m.text,
         }));
 
-      const response = await fetch(`${apiUrl}/api/chat`, {
+      const response = await fetch(`${apiUrl}/api/chat/stream`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ message: inputText, history }),
+        body: JSON.stringify({ message: currentInput, history }),
       });
 
       if (!response.ok) {
         throw new Error("Network error");
       }
 
-      const data = await response.json();
-
       // Remove wake-up message and mark backend as ready
       setMessages((prev) => prev.filter((m) => m.id !== "waking"));
       sessionStorage.setItem("backendReady", "true");
       sessionStorage.setItem("backendReadyTime", Date.now().toString());
 
-      const botMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        text: data.response,
-        isUser: false,
-        sources: data.sources,
-      };
+      // Create bot message that will be updated
+      const botMessageId = (Date.now() + 1).toString();
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: botMessageId,
+          text: "",
+          isUser: false,
+        },
+      ]);
 
-      setMessages((prev) => [...prev, botMessage]);
+      // Read stream
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+      let accumulatedText = "";
+      let sources: string[] = [];
+
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          const chunk = decoder.decode(value, { stream: true });
+
+          // Check if chunk contains sources
+          if (chunk.includes("__SOURCES__:")) {
+            const [text, sourcesStr] = chunk.split("__SOURCES__:");
+            accumulatedText += text;
+            sources = sourcesStr.split(",").filter((s) => s.trim());
+          } else {
+            accumulatedText += chunk;
+          }
+
+          // Update message with accumulated text
+          setMessages((prev) =>
+            prev.map((msg) =>
+              msg.id === botMessageId
+                ? { ...msg, text: accumulatedText, sources }
+                : msg,
+            ),
+          );
+        }
+      }
     } catch (error) {
       setMessages((prev) => prev.filter((m) => m.id !== "waking"));
 
