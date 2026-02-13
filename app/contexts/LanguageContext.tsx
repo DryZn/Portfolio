@@ -30,6 +30,7 @@ const translations = {
       "Spécialisé en Python, JavaScript et Intelligence Artificielle",
     "hero.description":
       "Ingénieur logiciel avec 4+ ans d'expérience chez Ericsson (Python, C++, Java). Passionné par l'IA et les LLM, je me spécialise dans le développement d'applications intelligentes et de solutions MLOps innovantes.",
+    "hero.chatbot": "💬 Essayez mon assistant IA en bas à droite !",
     "hero.viewProjects": "Voir mes projets",
     "hero.contact": "Me contacter",
     "skills.title": "Compétences",
@@ -41,7 +42,7 @@ const translations = {
     "experience.title": "Expérience",
     "experience.subtitle": "Mon parcours professionnel",
     "projects.title": "Projets",
-    "projects.subtitle": "Mes réalisations en LLM et IA",
+    "projects.subtitle": "Projets full-stack développés de A à Z",
     "projects.code": "Code",
     "projects.demo": "Demo",
     "projects.private": "Projet privé",
@@ -129,6 +130,7 @@ const translations = {
     "chat.sources": "Sources",
     "chat.waking":
       "⏳ Réveil du serveur en cours... Première requête peut prendre 30 secondes.",
+    "chat.tooltip": "Posez-moi des questions sur Anthony !",
     "projects.portfolio.title": "Assistant Portfolio IA",
     "projects.portfolio.description":
       "Chatbot RAG full-stack avec FastAPI, LangChain, FAISS et Google Gemini. Architecture stateless avec Next.js 14, CI/CD GitHub Actions, déployé sur Render et Vercel.",
@@ -149,6 +151,7 @@ const translations = {
       "Specialized in Python, JavaScript and Artificial Intelligence",
     "hero.description":
       "Software engineer with 4+ years of experience at Ericsson (Python, C++, Java). Passionate about AI and LLMs, I specialize in developing intelligent applications and innovative MLOps solutions.",
+    "hero.chatbot": "💬 Try my AI assistant in the bottom right!",
     "hero.viewProjects": "View my projects",
     "hero.contact": "Contact me",
     "skills.title": "Skills",
@@ -160,7 +163,7 @@ const translations = {
     "experience.title": "Experience",
     "experience.subtitle": "My professional journey",
     "projects.title": "Projects",
-    "projects.subtitle": "My achievements in LLM and AI",
+    "projects.subtitle": "Full-stack projects built from scratch",
     "projects.code": "Code",
     "projects.demo": "Demo",
     "projects.private": "Private project",
@@ -247,6 +250,7 @@ const translations = {
       "Sorry, I can't respond right now. Check that the backend API is running.",
     "chat.sources": "Sources",
     "chat.waking": "⏳ Waking up server... First request may take 30 seconds.",
+    "chat.tooltip": "Ask me about Anthony!",
     "projects.portfolio.title": "AI Portfolio Assistant",
     "projects.portfolio.description":
       "Full-stack RAG chatbot with FastAPI, LangChain, FAISS and Google Gemini. Stateless architecture with Next.js 14, GitHub Actions CI/CD, deployed on Render and Vercel.",

@@ -31,9 +31,18 @@ export default function Hero() {
             {t("hero.subtitle")}
           </p>
 
-          <p className="text-lg text-gray-500 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
             {t("hero.description")}
           </p>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="text-md text-blue-600 dark:text-blue-400 mb-12 font-medium"
+          >
+            {t("hero.chatbot")}
+          </motion.p>
 
           <div className="flex gap-4 justify-center">
             <motion.a

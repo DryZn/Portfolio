@@ -189,9 +189,10 @@ export default function Chatbot({
       {/* Floating button */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition-all duration-300 z-50 ${
+        className={`fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition-all duration-300 z-50 animate-bounce hover:animate-none ${
           isOpen ? "scale-0" : "scale-100"
         }`}
+        title={t("chat.tooltip")}
       >
         <MessageCircle size={24} />
       </button>
