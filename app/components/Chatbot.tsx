@@ -24,7 +24,7 @@ export default function Chatbot({
 
   const [messages, setMessages] = useState<Message[]>([
     {
-      id: "1",
+      id: "welcome",
       text: t("chat.welcome"),
       isUser: false,
     },
@@ -32,17 +32,19 @@ export default function Chatbot({
   const [inputText, setInputText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Update welcome message when language changes
+  // Update system messages when language changes
   useEffect(() => {
+    const systemMessageIds = [
+      "welcome",
+      "waking",
+      "rateLimit",
+      "error",
+      "resetSuccess",
+    ];
     setMessages((prev) => {
       return prev.map((msg) => {
-        // Update welcome message
-        if (msg.id === "1" && !msg.isUser) {
-          return { ...msg, text: t("chat.welcome") };
-        }
-        // Update waking message
-        if (msg.id === "waking" && !msg.isUser) {
-          return { ...msg, text: t("chat.waking") };
+        if (!msg.isUser && systemMessageIds.includes(msg.id)) {
+          return { ...msg, text: t(`chat.${msg.id}`) };
         }
         return msg;
       });
@@ -86,7 +88,7 @@ export default function Chatbot({
     try {
       // Send last 20 messages as history (exclude welcome message)
       const history = messages
-        .filter((m) => m.id !== "1" && m.id !== "waking")
+        .filter((m) => m.id !== "welcome" && m.id !== "waking")
         .slice(-20)
         .map((m) => ({
           role: m.isUser ? "user" : "assistant",
@@ -100,6 +102,19 @@ export default function Chatbot({
         },
         body: JSON.stringify({ message: currentInput, history }),
       });
+
+      if (response.status === 429) {
+        setMessages((prev) => prev.filter((m) => m.id !== "waking"));
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: "rateLimit",
+            text: t("chat.rateLimit"),
+            isUser: false,
+          },
+        ]);
+        return;
+      }
 
       if (!response.ok) {
         throw new Error("Network error");
@@ -157,7 +172,7 @@ export default function Chatbot({
       setMessages((prev) => prev.filter((m) => m.id !== "waking"));
 
       const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
+        id: "error",
         text: t("chat.error"),
         isUser: false,
       };
@@ -170,7 +185,7 @@ export default function Chatbot({
   const resetChat = () => {
     setMessages([
       {
-        id: "1",
+        id: "resetSuccess",
         text: t("chat.resetSuccess"),
         isUser: false,
       },

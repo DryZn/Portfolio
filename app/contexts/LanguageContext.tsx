@@ -131,6 +131,8 @@ const translations = {
     "chat.waking":
       "⏳ Réveil du serveur en cours... Première requête peut prendre 30 secondes.",
     "chat.tooltip": "Posez-moi des questions sur Anthony !",
+    "chat.rateLimit":
+      "⚠️ Le quota quotidien de l'assistant IA a été atteint par les visiteurs du site. Revenez demain !",
     "projects.portfolio.title": "Assistant Portfolio IA",
     "projects.portfolio.description":
       "Chatbot RAG full-stack avec FastAPI, LangChain, FAISS et Google Gemini. Architecture stateless avec Next.js 14, CI/CD GitHub Actions, déployé sur Render et Vercel.",
@@ -251,6 +253,8 @@ const translations = {
     "chat.sources": "Sources",
     "chat.waking": "⏳ Waking up server... First request may take 30 seconds.",
     "chat.tooltip": "Ask me about Anthony!",
+    "chat.rateLimit":
+      "⚠️ The AI assistant's daily quota has been reached by site visitors. Come back tomorrow!",
     "projects.portfolio.title": "AI Portfolio Assistant",
     "projects.portfolio.description":
       "Full-stack RAG chatbot with FastAPI, LangChain, FAISS and Google Gemini. Stateless architecture with Next.js 14, GitHub Actions CI/CD, deployed on Render and Vercel.",
