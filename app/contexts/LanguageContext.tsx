@@ -42,7 +42,8 @@ const translations = {
     "experience.title": "Expérience",
     "experience.subtitle": "Mon parcours professionnel",
     "projects.title": "Projets",
-    "projects.subtitle": "Projets full-stack développés de A à Z",
+    "projects.subtitle": "Code source de ce portfolio et autres projets",
+    "projects.thisSite": "Ce site",
     "projects.code": "Code",
     "projects.demo": "Demo",
     "projects.private": "Projet privé",
@@ -133,9 +134,12 @@ const translations = {
     "chat.tooltip": "Posez-moi des questions sur Anthony !",
     "chat.rateLimit":
       "⚠️ Le quota quotidien de l'assistant IA a été atteint par les visiteurs du site. Revenez demain !",
-    "projects.portfolio.title": "Assistant Portfolio IA",
-    "projects.portfolio.description":
-      "Chatbot RAG full-stack avec FastAPI, LangChain, FAISS et Google Gemini. Architecture stateless avec Next.js 14, CI/CD GitHub Actions, déployé sur Render et Vercel.",
+    "projects.backend.title": "Backend API - RAG Chatbot",
+    "projects.backend.description":
+      "API FastAPI avec RAG (LangChain + FAISS) et Google Gemini pour répondre aux questions sur mon parcours. Architecture stateless, CI/CD GitHub Actions, déployé sur Render.",
+    "projects.frontend.title": "Frontend - Portfolio Next.js",
+    "projects.frontend.description":
+      "Interface moderne avec Next.js 14, TypeScript et Tailwind CSS. Animations Framer Motion, support bilingue, chatbot intégré. Déployé sur Vercel avec CI/CD.",
     "projects.game.title": "Dungeon Twister - Jeu Vidéo",
     "projects.game.description":
       "Adaptation du jeu de société avec moteur graphique 2D OpenGL et multijoueur LAN. Serveur FastAPI sur Raspberry Pi pour distribution et mises à jour automatiques.",
@@ -165,7 +169,8 @@ const translations = {
     "experience.title": "Experience",
     "experience.subtitle": "My professional journey",
     "projects.title": "Projects",
-    "projects.subtitle": "Full-stack projects built from scratch",
+    "projects.subtitle": "Source code of this portfolio and other projects",
+    "projects.thisSite": "This site",
     "projects.code": "Code",
     "projects.demo": "Demo",
     "projects.private": "Private project",
@@ -255,9 +260,12 @@ const translations = {
     "chat.tooltip": "Ask me about Anthony!",
     "chat.rateLimit":
       "⚠️ The AI assistant's daily quota has been reached by site visitors. Come back tomorrow!",
-    "projects.portfolio.title": "AI Portfolio Assistant",
-    "projects.portfolio.description":
-      "Full-stack RAG chatbot with FastAPI, LangChain, FAISS and Google Gemini. Stateless architecture with Next.js 14, GitHub Actions CI/CD, deployed on Render and Vercel.",
+    "projects.backend.title": "Backend API - RAG Chatbot",
+    "projects.backend.description":
+      "FastAPI with RAG (LangChain + FAISS) and Google Gemini to answer questions about my background. Stateless architecture, GitHub Actions CI/CD, deployed on Render.",
+    "projects.frontend.title": "Frontend - Next.js Portfolio",
+    "projects.frontend.description":
+      "Modern interface with Next.js 14, TypeScript and Tailwind CSS. Framer Motion animations, bilingual support, integrated chatbot. Deployed on Vercel with CI/CD.",
     "projects.game.title": "Dungeon Twister - Video Game",
     "projects.game.description":
       "Board game adaptation with 2D OpenGL graphics engine and LAN multiplayer. FastAPI server on Raspberry Pi for distribution and automatic updates.",

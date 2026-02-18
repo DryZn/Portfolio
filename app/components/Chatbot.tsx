@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Send, MessageCircle, X, RotateCcw } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
+import { useChatbot } from "../contexts/ChatbotContext";
 import ReactMarkdown from "react-markdown";
 
 interface Message {
@@ -20,7 +21,7 @@ export default function Chatbot({
   apiUrl = process.env.NEXT_PUBLIC_API_URL,
 }: ChatbotProps) {
   const { language, t } = useLanguage();
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, setIsOpen } = useChatbot();
 
   const [messages, setMessages] = useState<Message[]>([
     {
