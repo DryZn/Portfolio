@@ -39,14 +39,7 @@ const projects = [
   {
     titleKey: "projects.game.title",
     descriptionKey: "projects.game.description",
-    tech: [
-      "Python",
-      "OpenGL",
-      "Pygame",
-      "FastAPI",
-      "Raspberry Pi",
-      "Pyinstaller",
-    ],
+    tech: ["Python", "OpenGL", "Pygame", "Flask", "FastAPI", "Raspberry Pi"],
     github: null,
     demo: null,
   },

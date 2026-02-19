@@ -142,7 +142,7 @@ const translations = {
       "Interface moderne avec Next.js 14, TypeScript et Tailwind CSS. Animations Framer Motion, support bilingue, chatbot intégré. Déployé sur Vercel avec CI/CD.",
     "projects.game.title": "Dungeon Twister - Jeu Vidéo",
     "projects.game.description":
-      "Adaptation du jeu de société avec moteur graphique 2D OpenGL et multijoueur LAN. Serveur FastAPI sur Raspberry Pi pour distribution et mises à jour automatiques.",
+      "Adaptation vidéoludique du jeu de société (2020-2023). Moteur graphique 2D avec OpenGL/Python, modes solo/LAN/en ligne. Serveur Raspberry Pi avec Flask pour distribution et FastAPI pour mises à jour automatiques.",
   },
   en: {
     "nav.home": "Home",
@@ -268,7 +268,7 @@ const translations = {
       "Modern interface with Next.js 14, TypeScript and Tailwind CSS. Framer Motion animations, bilingual support, integrated chatbot. Deployed on Vercel with CI/CD.",
     "projects.game.title": "Dungeon Twister - Video Game",
     "projects.game.description":
-      "Board game adaptation with 2D OpenGL graphics engine and LAN multiplayer. FastAPI server on Raspberry Pi for distribution and automatic updates.",
+      "Video game adaptation of the board game (2020-2023). 2D graphics engine with OpenGL/Python, single-player/LAN/online modes. Raspberry Pi server with Flask for distribution and FastAPI for automatic updates.",
   },
 };
 
