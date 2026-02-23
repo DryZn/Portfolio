@@ -28,6 +28,7 @@ Modern portfolio for a Python/JS developer specialized in LLM and Artificial Int
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
+- **Analytics**: Google Analytics 4 + Vercel Analytics
 
 ## 🔄 CI/CD Pipeline
 
@@ -75,6 +76,16 @@ npm start
 - ✅ Contact form
 - ✅ Smooth navigation
 - ✅ SEO optimized
+
+## 📊 Analytics
+
+Chatbot events are tracked with Google Analytics 4:
+
+1. Create GA4 account at https://analytics.google.com
+2. Add `NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX` to `.env.local`
+3. Deploy and add environment variable to Vercel
+
+**Tracked:** session duration, message count, response time, errors
 
 ## 📝 Customization
 

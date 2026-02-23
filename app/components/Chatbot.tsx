@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Send, MessageCircle, X, RotateCcw } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useChatbot } from "../contexts/ChatbotContext";
+import { ChatbotEvents } from "../../lib/analytics";
 import ReactMarkdown from "react-markdown";
 
 interface Message {
@@ -22,6 +23,7 @@ export default function Chatbot({
 }: ChatbotProps) {
   const { language, t } = useLanguage();
   const { isOpen, setIsOpen } = useChatbot();
+  const [sessionStartTime, setSessionStartTime] = useState<number | null>(null);
 
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -65,6 +67,11 @@ export default function Chatbot({
     const currentInput = inputText;
     setInputText("");
     setIsLoading(true);
+
+    // Track message sent
+    ChatbotEvents.messageSent(currentInput.length, language);
+
+    const requestStartTime = Date.now();
 
     // Show wake-up message if backend was not ready or inactive for >10min
     const backendReadyTime = sessionStorage.getItem("backendReadyTime");
@@ -114,6 +121,7 @@ export default function Chatbot({
             isUser: false,
           },
         ]);
+        ChatbotEvents.error("rate_limit");
         return;
       }
 
@@ -169,6 +177,10 @@ export default function Chatbot({
           );
         }
       }
+
+      // Track response received
+      const responseTime = Date.now() - requestStartTime;
+      ChatbotEvents.responseReceived(responseTime, sources.length > 0);
     } catch (error) {
       setMessages((prev) => prev.filter((m) => m.id !== "waking"));
 
@@ -178,12 +190,18 @@ export default function Chatbot({
         isUser: false,
       };
       setMessages((prev) => [...prev, errorMessage]);
+      ChatbotEvents.error("network_error");
     } finally {
       setIsLoading(false);
     }
   };
 
   const resetChat = () => {
+    const messageCount = messages.filter((m) => m.isUser).length;
+    const sessionDuration = sessionStartTime
+      ? Date.now() - sessionStartTime
+      : 0;
+    ChatbotEvents.conversationReset(messageCount, sessionDuration);
     setMessages([
       {
         id: "resetSuccess",
@@ -204,7 +222,11 @@ export default function Chatbot({
     <>
       {/* Floating button */}
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={() => {
+          setIsOpen(true);
+          setSessionStartTime(Date.now());
+          ChatbotEvents.opened();
+        }}
         className={`fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition-all duration-300 z-50 animate-bounce hover:animate-none ${
           isOpen ? "scale-0" : "scale-100"
         }`}
@@ -231,7 +253,13 @@ export default function Chatbot({
               <RotateCcw size={16} />
             </button>
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+                const sessionDuration = sessionStartTime
+                  ? Date.now() - sessionStartTime
+                  : 0;
+                ChatbotEvents.closed(sessionDuration);
+              }}
               className="hover:bg-blue-700 p-1 rounded"
             >
               <X size={16} />
