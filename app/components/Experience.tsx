@@ -7,61 +7,47 @@ import { useLanguage } from "../contexts/LanguageContext";
 const experiences = [
   {
     company: "Ericsson",
-    roleKey: "experience.ericsson.frontrunner",
-    periodKey: "experience.ericsson.frontrunner.period",
+    roleKey: "experience.ericsson.fullstack",
+    periodKey: "experience.ericsson.fullstack.period",
     location: "Massy, France",
-    descKeys: [
-      "experience.ericsson.frontrunner.desc1",
-      "experience.ericsson.frontrunner.desc2",
-      "experience.ericsson.frontrunner.desc3",
-    ],
-    tech: ["JavaScript", "Docker", "5G", "Node.js", "SQL"],
-  },
-  {
-    company: "Ericsson",
-    roleKey: "experience.ericsson.cpp",
-    periodKey: "experience.ericsson.cpp.period",
-    location: "Massy, France",
-    descKeys: [
-      "experience.ericsson.cpp.desc1",
-      "experience.ericsson.cpp.desc2",
-      "experience.ericsson.cpp.desc3",
-    ],
-    tech: ["C++", "5G", "Git", "Gerrit", "Jenkins"],
-  },
-  {
-    company: "Ericsson",
-    roleKey: "experience.ericsson.cloud",
-    periodKey: "experience.ericsson.cloud.period",
-    location: "Massy, France",
-    descKeys: [
-      "experience.ericsson.cloud.desc1",
-      "experience.ericsson.cloud.desc2",
-      "experience.ericsson.cloud.desc3",
-      "experience.ericsson.cloud.desc4",
-    ],
-    tech: ["Python", "Kubernetes", "Docker", "FastAPI", "MongoDB", "Pandas"],
-  },
-  {
-    company: "Ericsson",
-    roleKey: "experience.ericsson.java",
-    periodKey: "experience.ericsson.java.period",
-    location: "Massy, France",
-    descKeys: [
-      "experience.ericsson.java.desc1",
-      "experience.ericsson.java.desc2",
-      "experience.ericsson.java.desc3",
-      "experience.ericsson.java.desc4",
+    projects: [
+      {
+        title: "experience.ericsson.fullstack.project1",
+        descKeys: [
+          "experience.ericsson.fullstack.desc1",
+          "experience.ericsson.fullstack.desc2",
+        ],
+      },
+      {
+        title: "experience.ericsson.fullstack.project2",
+        descKeys: [
+          "experience.ericsson.fullstack.desc3",
+          "experience.ericsson.fullstack.desc4",
+          "experience.ericsson.fullstack.desc5",
+        ],
+      },
+      {
+        title: "experience.ericsson.fullstack.project3",
+        descKeys: [
+          "experience.ericsson.fullstack.desc6",
+          "experience.ericsson.fullstack.desc7",
+          "experience.ericsson.fullstack.desc8",
+          "experience.ericsson.fullstack.desc9",
+          "experience.ericsson.fullstack.desc10",
+        ],
+      },
     ],
     tech: [
-      "Java",
-      "Spring Boot",
-      "MongoDB",
-      "Kafka",
-      "Maven",
-      "Docker",
+      "Python",
+      "FastAPI",
+      "React",
+      "TypeScript",
+      "JavaScript",
       "Kubernetes",
-      "Jenkins",
+      "Docker",
+      "GitLab CI/CD",
+      "MongoDB",
+      "OpenTelemetry",
     ],
   },
   {
@@ -95,8 +81,18 @@ const experiences = [
       "experience.thales.desc1",
       "experience.thales.desc2",
       "experience.thales.desc3",
+      "experience.thales.desc4",
     ],
-    tech: ["Python", "OpenCV", "TensorFlow", "Deep Learning", "SQLite"],
+    tech: [
+      "Python",
+      "OpenCV",
+      "TensorFlow",
+      "Deep Learning",
+      "SQL",
+      "Cuda",
+      "Gstreamer",
+      "Nvidia Jetson",
+    ],
   },
 ];
 
@@ -147,15 +143,34 @@ export default function Experience() {
               </div>
 
               <ul className="space-y-2 mb-4">
-                {exp.descKeys.map((key, i) => (
-                  <li
-                    key={i}
-                    className="text-gray-600 dark:text-gray-300 flex items-start"
-                  >
-                    <span className="text-blue-500 mr-2">▸</span>
-                    {t(key)}
-                  </li>
-                ))}
+                {exp.projects
+                  ? exp.projects.map((project, projIndex) => (
+                      <li key={projIndex} className="mb-3">
+                        <div className="font-semibold text-gray-700 dark:text-gray-200 mb-1">
+                          {t(project.title)}
+                        </div>
+                        <ul className="space-y-1 ml-4">
+                          {project.descKeys.map((key, i) => (
+                            <li
+                              key={i}
+                              className="text-gray-600 dark:text-gray-300 flex items-start"
+                            >
+                              <span className="text-blue-500 mr-2">▸</span>
+                              {t(key)}
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    ))
+                  : exp.descKeys?.map((key, i) => (
+                      <li
+                        key={i}
+                        className="text-gray-600 dark:text-gray-300 flex items-start"
+                      >
+                        <span className="text-blue-500 mr-2">▸</span>
+                        {t(key)}
+                      </li>
+                    ))}
               </ul>
 
               <div className="flex flex-wrap gap-2">

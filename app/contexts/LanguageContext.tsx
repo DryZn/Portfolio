@@ -29,7 +29,7 @@ const translations = {
     "hero.subtitle":
       "Spécialisé en Python, JavaScript et Intelligence Artificielle",
     "hero.description":
-      "Ingénieur logiciel avec 4+ ans d'expérience chez Ericsson (Python, C++, Java). Passionné par l'IA et les LLM, je me spécialise dans le développement d'applications intelligentes et de solutions MLOps innovantes.",
+      "Développeur Fullstack Python avec 4+ ans d'expérience chez Ericsson. Spécialisé en FastAPI, React/TypeScript, et architecture MLOps. Expert en développement d'applications intelligentes avec LLMs et solutions cloud-native.",
     "hero.chatbot": "💬 Essayez mon assistant IA en bas à droite !",
     "hero.viewProjects": "Voir mes projets",
     "hero.contact": "Me contacter",
@@ -52,42 +52,34 @@ const translations = {
     "certifications.languages": "Langues",
     "certifications.viewBadge": "Voir le badge",
     "certifications.trainings": "Formations Ericsson",
-    "experience.ericsson.frontrunner": "Frontrunner",
-    "experience.ericsson.frontrunner.period": "Mai 2025 - Aujourd'hui",
-    "experience.ericsson.frontrunner.desc1":
-      "Développement de rApps en JavaScript",
-    "experience.ericsson.frontrunner.desc2":
-      "Supervision et gestion de projets avec méthodologie Scrum",
-    "experience.ericsson.frontrunner.desc3":
-      "Définition des cas d'usage avec les clients",
-    "experience.ericsson.cpp": "Développeur C++",
-    "experience.ericsson.cpp.period": "Févr. 2024 - Mai 2025",
-    "experience.ericsson.cpp.desc1":
-      "Développement C++ sur gNodeB (5G) - modules UE RPC et RC",
-    "experience.ericsson.cpp.desc2":
-      "Optimisation du temps d'interruption de handover entre cellules",
-    "experience.ericsson.cpp.desc3":
-      "Travail sur systèmes télécom temps réel critiques",
-    "experience.ericsson.cloud": "Développeur Cloud Native",
-    "experience.ericsson.cloud.period": "Avr. 2022 - Févr. 2024",
-    "experience.ericsson.cloud.desc1":
-      "Développement de microservice MLOps en Python",
-    "experience.ericsson.cloud.desc2":
-      "Création d'une bibliothèque de logging et wrapper OpenTelemetry",
-    "experience.ericsson.cloud.desc3":
-      "Déploiement d'applications Docker sur Kubernetes avec Helm",
-    "experience.ericsson.cloud.desc4":
-      "Microservice de simulation de trafic 4G/5G (Python, JS, MongoDB)",
-    "experience.ericsson.java": "Développeur Java",
-    "experience.ericsson.java.period": "Oct. 2021 - Avr. 2022",
-    "experience.ericsson.java.desc1":
-      "Développement de microservices Java avec IntelliJ et Spring Boot",
-    "experience.ericsson.java.desc2":
-      "Gestion des dépendances FOSS Guardian avec Maven et méthodologie Scrum",
-    "experience.ericsson.java.desc3":
-      "Utilisation de MongoDB, Kafka, Swagger et Postman pour le débogage",
-    "experience.ericsson.java.desc4":
-      "Tests unitaires et d'intégration avec méthodologie Scrum",
+    "experience.ericsson.fullstack": "Développeur Fullstack Python",
+    "experience.ericsson.fullstack.period": "Oct. 2021 - Présent",
+    "experience.ericsson.fullstack.project1":
+      "Co-architecture d'une application web d'assistance au tuning automatique:",
+    "experience.ericsson.fullstack.desc1":
+      "Scrum Master : planification des sprints et définition des tâches",
+    "experience.ericsson.fullstack.desc2":
+      "Lead frontend en JavaScript avec implémentation des jobs Jenkins",
+    "experience.ericsson.fullstack.project2":
+      "Contribution frontend/backend sur une app de simulation d'équipements réseau:",
+    "experience.ericsson.fullstack.desc3":
+      "Wrapper Python OpenTelemetry pour tous les microservices backend",
+    "experience.ericsson.fullstack.desc4":
+      "Algorithme récursif Python pour recherche de combinaisons d'équipements",
+    "experience.ericsson.fullstack.desc5":
+      "Implémentation React TypeScript de nouvelles fonctionnalités frontend",
+    "experience.ericsson.fullstack.project3":
+      "Conception d'un microservice d'inférence ML pour expérimentation de modèles:",
+    "experience.ericsson.fullstack.desc6":
+      "Création complète du pipeline CI/CD GitLab et sous-pipelines",
+    "experience.ericsson.fullstack.desc7":
+      "Lead FOSS Guardian pour gouvernance des dépendances Python (JFrog, pipenv)",
+    "experience.ericsson.fullstack.desc8":
+      "Déploiement via Docker et Helm sur clusters Kubernetes",
+    "experience.ericsson.fullstack.desc9":
+      "Backend Python avec FastAPI et asyncio, thread pool pour parallélisme",
+    "experience.ericsson.fullstack.desc10":
+      "Construction d'un service de logging standard entreprise en Python",
     "experience.sanofi.role": "Développeur d'Outils Analytiques",
     "experience.sanofi.period": "Sept. 2020 - Août 2021",
     "experience.sanofi.desc1":
@@ -99,11 +91,14 @@ const translations = {
     "experience.sanofi.desc4": "Tests d'intégration continue avec Jenkins",
     "experience.thales.role": "Ingénieur Traitement d'Images",
     "experience.thales.period": "Sept. 2018 - Août 2020",
-    "experience.thales.desc1": "Détection d'objets par Deep Learning et OpenCV",
+    "experience.thales.desc1":
+      "Conception d'un logiciel de détection de places de parking libres avec UI, backend Python et base SQL",
     "experience.thales.desc2":
-      "Module de reconnaissance de plaques sur Jetson Nano",
+      "Déploiement sur modules embarqués (cartes Nvidia Jetson)",
     "experience.thales.desc3":
-      "Développement de module de détection de fraude aux portiques",
+      "Module de reconnaissance de plaques en Python (OpenCV, Deep Learning, Cuda)",
+    "experience.thales.desc4":
+      "Module d'acquisition vidéo avec API Gstreamer en Python",
     "certifications.french": "Français",
     "certifications.french.level": "Langue maternelle",
     "certifications.english": "Anglais",
@@ -156,7 +151,7 @@ const translations = {
     "hero.subtitle":
       "Specialized in Python, JavaScript and Artificial Intelligence",
     "hero.description":
-      "Software engineer with 4+ years of experience at Ericsson (Python, C++, Java). Passionate about AI and LLMs, I specialize in developing intelligent applications and innovative MLOps solutions.",
+      "Fullstack Python Developer with 4+ years of experience at Ericsson. Specialized in FastAPI, React/TypeScript, and MLOps architecture. Expert in building intelligent applications with LLMs and cloud-native solutions.",
     "hero.chatbot": "💬 Try my AI assistant in the bottom right!",
     "hero.viewProjects": "View my projects",
     "hero.contact": "Contact me",
@@ -179,42 +174,34 @@ const translations = {
     "certifications.languages": "Languages",
     "certifications.viewBadge": "View badge",
     "certifications.trainings": "Ericsson Trainings",
-    "experience.ericsson.frontrunner": "Frontrunner",
-    "experience.ericsson.frontrunner.period": "May 2025 - Present",
-    "experience.ericsson.frontrunner.desc1":
-      "Development of rApps in JavaScript",
-    "experience.ericsson.frontrunner.desc2":
-      "Project supervision and management with Scrum methodology",
-    "experience.ericsson.frontrunner.desc3":
-      "Definition of use cases with clients",
-    "experience.ericsson.cpp": "C++ Developer",
-    "experience.ericsson.cpp.period": "Feb. 2024 - May 2025",
-    "experience.ericsson.cpp.desc1":
-      "C++ development on gNodeB (5G) - UE RPC and RC modules",
-    "experience.ericsson.cpp.desc2":
-      "Optimization of handover interruption time between cells",
-    "experience.ericsson.cpp.desc3":
-      "Work on critical real-time telecom systems",
-    "experience.ericsson.cloud": "Cloud Native Developer",
-    "experience.ericsson.cloud.period": "Apr. 2022 - Feb. 2024",
-    "experience.ericsson.cloud.desc1":
-      "Development of MLOps microservice in Python",
-    "experience.ericsson.cloud.desc2":
-      "Creation of logging library and OpenTelemetry wrapper",
-    "experience.ericsson.cloud.desc3":
-      "Deployment of Docker applications on Kubernetes with Helm",
-    "experience.ericsson.cloud.desc4":
-      "4G/5G traffic simulation microservice (Python, JS, MongoDB)",
-    "experience.ericsson.java": "Java Developer",
-    "experience.ericsson.java.period": "Oct. 2021 - Apr. 2022",
-    "experience.ericsson.java.desc1":
-      "Java microservices development using IntelliJ and Spring Boot",
-    "experience.ericsson.java.desc2":
-      "FOSS Guardian dependency management with Maven using Scrum methodology",
-    "experience.ericsson.java.desc3":
-      "Used MongoDB, Kafka, Swagger, and Postman for microservice debugging",
-    "experience.ericsson.java.desc4":
-      "Performed unit testing and integration testing tasks; followed Scrum methodology",
+    "experience.ericsson.fullstack": "Fullstack Python Developer",
+    "experience.ericsson.fullstack.period": "Oct. 2021 - Present",
+    "experience.ericsson.fullstack.project1":
+      "Co-architectured Automatic Tuning Assistance web app:",
+    "experience.ericsson.fullstack.desc1":
+      "Scrum Master: planned sprints and defined tasks to achieve Sprint goals",
+    "experience.ericsson.fullstack.desc2":
+      "Led frontend side in JavaScript with Jenkins pipeline implementation",
+    "experience.ericsson.fullstack.project2":
+      "Contributed to frontend/backend of a network equipment simulation web app:",
+    "experience.ericsson.fullstack.desc3":
+      "Created Python OpenTelemetry wrapper for all backend microservices",
+    "experience.ericsson.fullstack.desc4":
+      "Developed recursive Python algorithm to find specific equipment combinations",
+    "experience.ericsson.fullstack.desc5":
+      "Implemented new frontend features in React TypeScript",
+    "experience.ericsson.fullstack.project3":
+      "Designed Machine Learning inference microservice for model experimentation:",
+    "experience.ericsson.fullstack.desc6":
+      "Created entire GitLab CI/CD pipeline and sub-pipelines",
+    "experience.ericsson.fullstack.desc7":
+      "Led FOSS Guardian activities for Python dependency governance (JFrog, pipenv)",
+    "experience.ericsson.fullstack.desc8":
+      "Deployed via Docker and Helm to Kubernetes clusters",
+    "experience.ericsson.fullstack.desc9":
+      "Implemented backend Python features with FastAPI and asyncio, thread pool",
+    "experience.ericsson.fullstack.desc10":
+      "Built a company-standard logging service in Python",
     "experience.sanofi.role": "Analytical Tools Developer",
     "experience.sanofi.period": "Sept. 2020 - Aug. 2021",
     "experience.sanofi.desc1":
@@ -228,10 +215,13 @@ const translations = {
     "experience.thales.role": "Image Processing Engineer",
     "experience.thales.period": "Sept. 2018 - Aug. 2020",
     "experience.thales.desc1":
-      "Object detection using Deep Learning and OpenCV",
+      "Designed free parking spaces detection software with UI, Python backend and SQL database",
     "experience.thales.desc2":
-      "License plate recognition module on Jetson Nano",
-    "experience.thales.desc3": "Development of fraud detection module at gates",
+      "Deployed on embedded modules (Nvidia Jetson boards)",
+    "experience.thales.desc3":
+      "License plate recognition module in Python (OpenCV, Deep Learning, Cuda)",
+    "experience.thales.desc4":
+      "Video acquisition module using Gstreamer API in Python",
     "certifications.french": "French",
     "certifications.french.level": "Native",
     "certifications.english": "English",
